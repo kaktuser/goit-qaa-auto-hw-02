@@ -1,3 +1,5 @@
+import LoginPage from "./pages/LoginPage"; // Import klasy LoginPage
+
 describe("Login Tests", () => {
   const baseUrl = "https://www.edu.goit.global/account/login";
 
@@ -24,8 +26,10 @@ describe("Login Tests", () => {
   });
 
   it("Test 2 - Log in with testowyqa@qa.team and log out", () => {
+    const loginPage = new LoginPage(); // Utworzenie nowej instancji klasy LoginPage
+
     cy.visit(baseUrl);
-    cy.login("testowyqa@qa.team", "QA!automation-1");
+    loginPage.login("testowyqa@qa.team", "QA!automation-1"); // Użycie metody login z klasy LoginPage
 
     // Sprawdzenie, czy strona została załadowana
     cy.url().should("include", "/homepage"); // Zmienione na właściwy URL po zalogowaniu
